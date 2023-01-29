@@ -1,6 +1,6 @@
 import React from 'react'
-import { Flex,Heading,Button, Text } from '@chakra-ui/react'
-import { Link } from 'react-router-dom';
+import { Flex, Text } from '@chakra-ui/react'
+
 
 import CardGrid from '../components/card-grid';
 import Scores from "../components/scores"

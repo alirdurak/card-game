@@ -1,9 +1,22 @@
 import React from 'react'
+import { useFormik } from 'formik'
 import { Box, InputGroup, InputLeftAddon, Button, Heading, Icon, Input } from '@chakra-ui/react'
 import { FiLock, FiMail} from  "react-icons/fi"
 import { Link } from 'react-router-dom'
 export default function Form(props) {
-  return (
+
+  const formik = useFormik({
+    initialValues: {
+      email: '',
+      password:'',
+    },
+    onSubmit: values => {
+      
+     
+    },
+  });
+
+  return (    
     <div>
       <Box >
         <Box display="flex"  heigth="2xl"  flexDir="column" alignItems="center" marginTop={40} padding={5}>
@@ -15,20 +28,20 @@ export default function Form(props) {
               <Box width="md" padding={5} zIndex={1} >
                   <InputGroup padding={3} size="lg">
                       <InputLeftAddon children={<Icon as={FiMail} />} />
-                      <Input type="email" variant="outlined" placeholder='E-mail'/>
+                      <Input name='email' type="email" variant="outlined" placeholder='E-mail' onChange={formik.handleChange}/>
                   </InputGroup>
                   <InputGroup  padding={3} size="lg">
                         <InputLeftAddon children={<Icon as={FiLock} />} />
-                        <Input variant="outlined" placeholder='Password'
-                        type="password" />
+                        <Input name='password' variant="outlined" placeholder='Password'
+                        type="password" onChange={formik.handleChange} />
                   </InputGroup>
-                  <Button colorScheme="blue"  variant="solid">{props.sign}</Button>
+                  <Button onClick={formik.handleSubmit} colorScheme="blue"  variant="solid">{props.sign}</Button>
               </Box>
               <Button colorScheme="blue"  marginRight={3}  variant="solid">Sign with Google</Button>
           </Box>
         </Box>
           <Link to={`/${props.redirect}`}>
-              <Button variant="link">{props.redirectName}</Button>
+              <Button  variant="link">{props.redirectName}  </Button>
           </Link>
       
       </Box>
