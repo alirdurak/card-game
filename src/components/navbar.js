@@ -11,9 +11,7 @@ function Navbar() {
       align="center"
       justify="space-between"
       h={16}
-      sx={{
-        backgroundColor:" #B2F5EA"
-      }}
+     bgColor="green.100"
       >
         <Heading paddingLeft={3}
         >CARDLY</Heading>
