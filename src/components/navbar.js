@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Flex,Button, Heading } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
+import { auth } from '../firebase/create-user'
 
 function Navbar() {
   return (
@@ -17,16 +18,26 @@ function Navbar() {
         >CARDLY</Heading>
           
         <Flex gap={4} marginRight={2}>
-    <Link to='/login' >
-          <Button colorScheme="blue">
-            Sign In
+
+          {
+            auth.currentUser &&  <Button colorScheme="blue">
+            Log Out
           </Button>
-      </Link>   
-    <Link to='/signup' >
-          <Button colorScheme="blue">
-            Sign Up
-          </Button>
-      </Link>   
+          }
+    {
+      !auth.currentUser &&<Flex gap={4} >
+         <Link to='/login' >
+        <Button colorScheme="blue">
+          Sign In
+        </Button>
+          </Link>   
+        <Link to='/signup' >
+        <Button colorScheme="blue">
+          Sign Up
+        </Button>
+          </Link>
+      </Flex>
+    }
           
         </Flex>
       </Flex>

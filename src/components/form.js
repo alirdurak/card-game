@@ -2,19 +2,24 @@ import React from 'react'
 import { useFormik } from 'formik'
 import { Box, InputGroup, InputLeftAddon, Button, Heading, Icon, Input } from '@chakra-ui/react'
 import { FiLock, FiMail} from  "react-icons/fi"
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
+
+
+
+
 export default function Form(props) {
+  
+
 
   const formik = useFormik({
     initialValues: {
       email: '',
-      password:'',
+      password:''
     },
-    onSubmit: values => {
-      
-     
-    },
-  });
+    onSubmit: async (values) => {
+    await props.method({email:values.email, password:values.password})
+
+  }});
 
   return (    
     <div>
@@ -25,7 +30,8 @@ export default function Form(props) {
           </Link>
           <Box display="flex" flexDir="column"   alignItems="center" zIndex={2} width="xl"   bg="green.100" borderRadius="xl" h={400} padding={3} boxShadow="2xl" >
               <Heading>{props.heading}</Heading>
-              <Box width="md" padding={5} zIndex={1} >
+
+              <Box  width="md" padding={5} zIndex={1} >
                   <InputGroup padding={3} size="lg">
                       <InputLeftAddon children={<Icon as={FiMail} />} />
                       <Input name='email' type="email" variant="outlined" placeholder='E-mail' onChange={formik.handleChange}/>
