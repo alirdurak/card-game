@@ -1,15 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { auth } from "../firebase/create-user";
+
 
 const authSlice = createSlice({
     name:"auth",
     initialState:{
-        user: auth.currentUser
+        user: JSON.parse(localStorage.getItem("user")) || null
     },
     reducers:{
+        loginMethod: (state,action) => {
+            localStorage.setItem("user", JSON.stringify(action.payload))
+            state.user = action.payload
+        },
+        logoutMethod: (state) => {
+            localStorage.removeItem("user")
+            state.user = null
+        }
 
     }
 })
 
-// export const {} = authSlice.actions
+export const {loginMethod, logoutMethod} = authSlice.actions
 export default authSlice.reducer

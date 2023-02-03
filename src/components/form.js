@@ -1,15 +1,16 @@
-import React from 'react'
 import { useFormik } from 'formik'
 import { Box, InputGroup, InputLeftAddon, Button, Heading, Icon, Input } from '@chakra-ui/react'
 import { FiLock, FiMail} from  "react-icons/fi"
-import { Link,useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { loginMethod } from '../redux/auth-slice'
 
 
 
 
 export default function Form(props) {
   
-
+const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -17,7 +18,8 @@ export default function Form(props) {
       password:''
     },
     onSubmit: async (values) => {
-    await props.method({email:values.email, password:values.password})
+     const currentUser = await props.method(values.email, values.password)
+     dispatch(loginMethod(currentUser))
 
   }});
 

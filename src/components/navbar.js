@@ -2,9 +2,18 @@ import React from 'react'
 
 import { Flex,Button, Heading } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { auth } from '../firebase/create-user'
+import { logout } from '../firebase/logout'
+import { useDispatch,useSelector } from 'react-redux'
+import { logoutMethod } from '../redux/auth-slice'
 
 function Navbar() {
+  const dispatch = useDispatch()
+  const user = useSelector(state=> state.auth.user)
+  const handleLogout = () => {
+    logout()
+    dispatch(logoutMethod())
+  }
+
   return (
     <div>
          <Flex
@@ -20,12 +29,12 @@ function Navbar() {
         <Flex gap={4} marginRight={2}>
 
           {
-            auth.currentUser &&  <Button colorScheme="blue">
+            user &&  <Button onClick={handleLogout} colorScheme="blue">
             Log Out
           </Button>
           }
     {
-      !auth.currentUser &&<Flex gap={4} >
+      !user &&<Flex gap={4} >
          <Link to='/login' >
         <Button colorScheme="blue">
           Sign In
