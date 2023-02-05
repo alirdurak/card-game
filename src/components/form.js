@@ -4,13 +4,14 @@ import { FiLock, FiMail} from  "react-icons/fi"
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginMethod } from '../redux/auth-slice'
+import { useNavigate } from 'react-router-dom'
 
 
 
 
 export default function Form(props) {
-  
-const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const formik = useFormik({
     initialValues: {
@@ -20,6 +21,9 @@ const dispatch = useDispatch()
     onSubmit: async (values) => {
      const currentUser = await props.method(values.email, values.password)
      dispatch(loginMethod(currentUser))
+     if(currentUser ){
+      navigate("/")
+     }
 
   }});
 
