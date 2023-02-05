@@ -5,13 +5,21 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginMethod } from '../redux/auth-slice'
 import { useNavigate } from 'react-router-dom'
-
+import { googleSignIn } from '../firebase/google-signin'
 
 
 
 export default function Form(props) {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+
+  const googleHandle = async()=>{
+   const user = await googleSignIn()
+   dispatch(loginMethod(user  ))
+    user && navigate("/")
+  }
+
 
   const formik = useFormik({
     initialValues: {
@@ -49,7 +57,7 @@ export default function Form(props) {
                   </InputGroup>
                   <Button onClick={formik.handleSubmit} colorScheme="blue"  variant="solid">{props.sign}</Button>
               </Box>
-              <Button colorScheme="blue"  marginRight={3}  variant="solid">Sign with Google</Button>
+              <Button onClick={googleHandle} colorScheme="blue"  marginRight={3}  variant="solid">Sign with Google</Button>
           </Box>
         </Box>
           <Link to={`/${props.redirect}`}>

@@ -9,8 +9,8 @@ import { logoutMethod } from '../redux/auth-slice'
 function Navbar() {
   const dispatch = useDispatch()
   const user = useSelector(state=> state.auth.user)
-  const handleLogout = () => {
-    logout()
+  const handleLogout = async() => {
+    await logout()
     dispatch(logoutMethod())
   }
 
