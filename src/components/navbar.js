@@ -1,18 +1,14 @@
 import React from 'react'
-
 import { Flex,Button, Heading } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
-import { logout } from '../firebase/logout'
-import { useDispatch,useSelector } from 'react-redux'
-import { logoutMethod } from '../redux/auth-slice'
+import { useSelector } from 'react-redux'
+
+import ProfileMenu from './navbarcomp/profile-menu'
 
 function Navbar() {
-  const dispatch = useDispatch()
+  
   const user = useSelector(state=> state.auth.user)
-  const handleLogout = async() => {
-    await logout()
-    dispatch(logoutMethod())
-  }
+ 
 
   return (
     <div>
@@ -29,9 +25,7 @@ function Navbar() {
         <Flex gap={4} marginRight={2}>
 
           {
-            user &&  <Button onClick={handleLogout} colorScheme="blue">
-            Log Out
-          </Button>
+            user &&  <ProfileMenu/>
           }
     {
       !user &&<Flex gap={4} >

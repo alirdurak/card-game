@@ -2,12 +2,12 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD7BMHZ--uJdfvEVqCk3DyQtWfcShHBzUw",
-  authDomain: "cardly-cardgame-a4390.firebaseapp.com",
-  projectId: "cardly-cardgame-a4390",
-  storageBucket: "cardly-cardgame-a4390.appspot.com",
-  messagingSenderId: "492942085917",
-  appId: "1:492942085917:web:846088c82b8df704649bf4"
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID
 };
 
 // Initialize Firebase
