@@ -18,10 +18,12 @@ function Navbar() {
       justify="space-between"
       h={16}
      bgColor="green.100"
-      >
-        <Heading paddingLeft={3}
-        >CARDLY</Heading>
-          
+      ><Link to="/">
+        
+          <Heading paddingLeft={3}
+          >CARDLY</Heading>
+        
+      </Link>   
         <Flex gap={4} marginRight={2}>
 
           {

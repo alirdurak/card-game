@@ -10,15 +10,20 @@ import {
 } from '@chakra-ui/react'
 import { logout } from '../../firebase/logout'
 import { logoutMethod } from '../../redux/auth-slice'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import {BsGear} from "react-icons/bs"
+import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 function ProfileMenu() {
   const dispatch = useDispatch()
+  const user = useSelector(state => state.auth.user)
+  const navigate = useNavigate()
 
   const handleLogout = async() => {
     await logout()
-    dispatch(logoutMethod())
-  }
+      dispatch(logoutMethod())
+      navigate("/")
+    }
 
   return (
     <div>
@@ -28,8 +33,9 @@ function ProfileMenu() {
   </MenuButton>
   <MenuList>
     <MenuGroup title='Profile'>
-      <MenuItem>My Account</MenuItem>
-      <MenuItem>Payments </MenuItem>
+      <Link to="/profile">
+        <MenuItem>My Account</MenuItem>
+      </Link>
     </MenuGroup>
     <MenuDivider />
     <MenuGroup >
