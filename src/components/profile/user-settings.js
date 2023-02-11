@@ -2,15 +2,20 @@ import React from 'react'
 import { FiUser,FiImage } from 'react-icons/fi'
 import {  InputGroup, InputLeftAddon, Button, Icon, Input } from '@chakra-ui/react'
 import { useFormik } from 'formik'
+import { profileUpdate } from '../../firebase/auth/update-profile'
+import { useDispatch } from 'react-redux'
+import { loginMethod } from '../../redux/auth-slice'
 function UserSettings() {
+  const dispatch = useDispatch()
     const formik = useFormik({
         initialValues: {
             displayName:"",
-            image:""
+            photoURL:""
 
         },
-        onSubmit: values =>{
-
+        onSubmit: async (values) =>{
+        const user = await profileUpdate( values.displayName, values.photoURL)
+          dispatch(loginMethod(user))
         }
     })
   return (
@@ -22,7 +27,7 @@ function UserSettings() {
                         </InputGroup>                              
                         <InputGroup padding={3} size="lg">
                           <InputLeftAddon children={<Icon as={FiImage} />} />
-                          <Input name='image'  variant="outlined" placeholder='Profile Image' onChange={formik.handleChange}/>
+                          <Input name='photoURL'  variant="outlined" placeholder='Profile Image' onChange={formik.handleChange}/>
                           </InputGroup>
                           <Button colorScheme="blue" onClick={formik.handleSubmit}>Update</Button>
       
