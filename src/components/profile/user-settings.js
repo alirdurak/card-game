@@ -1,6 +1,6 @@
 import React from 'react'
 import { FiUser,FiImage } from 'react-icons/fi'
-import {  InputGroup, InputLeftAddon, Button, Heading, Icon, Input } from '@chakra-ui/react'
+import {  InputGroup, InputLeftAddon, Button, Icon, Input } from '@chakra-ui/react'
 import { useFormik } from 'formik'
 function UserSettings() {
     const formik = useFormik({
@@ -24,7 +24,7 @@ function UserSettings() {
                           <InputLeftAddon children={<Icon as={FiImage} />} />
                           <Input name='image'  variant="outlined" placeholder='Profile Image' onChange={formik.handleChange}/>
                           </InputGroup>
-                          <Button onClick={formik.handleSubmit}>Update</Button>
+                          <Button colorScheme="blue" onClick={formik.handleSubmit}>Update</Button>
       
     </div>
   )

@@ -1,5 +1,5 @@
 import Form from '../../components/form'
-import { signIn } from '../../firebase/login'
+import { signIn } from '../../firebase/auth/login'
 
 function Login() {
 

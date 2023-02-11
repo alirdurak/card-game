@@ -1,5 +1,5 @@
 import {getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { app } from "./firebase-config";
+import { app } from "../firebase-config";
 import toast from "react-hot-toast"
 const provider = new GoogleAuthProvider();
 const auth = getAuth(app);

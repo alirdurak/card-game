@@ -6,12 +6,13 @@ import {
   MenuGroup,
   MenuDivider,
   Button,
-  Icon
+  Icon,
+  Text
 } from '@chakra-ui/react'
-import { logout } from '../../firebase/logout'
+import { logout } from '../../firebase/auth/logout'
 import { logoutMethod } from '../../redux/auth-slice'
 import { useDispatch,useSelector } from 'react-redux'
-import {BsGear} from "react-icons/bs"
+import {FiMenu,FiSettings,FiLogOut} from "react-icons/fi"
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 function ProfileMenu() {
@@ -29,17 +30,21 @@ function ProfileMenu() {
     <div>
         <Menu>
   <MenuButton as={Button}  bgColor="green.100" >
-    <Icon  as={BsGear}></Icon>
+    <  Icon as={FiMenu}/>
   </MenuButton>
   <MenuList>
     <MenuGroup title='Profile'>
       <Link to="/profile">
-        <MenuItem>My Account</MenuItem>
+        <MenuItem gap="2" >
+        <Icon as={FiSettings} /> <Text>User Settings</Text>
+        </MenuItem>
       </Link>
     </MenuGroup>
     <MenuDivider />
     <MenuGroup >
-      <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      <MenuItem gap="2" onClick={handleLogout}>
+        <Icon as={FiLogOut} />
+        <Text>Logout</Text></MenuItem>
       
     </MenuGroup>
   </MenuList>

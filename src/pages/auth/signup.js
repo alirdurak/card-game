@@ -1,4 +1,4 @@
-import { register } from '../../firebase/create-user'
+import { register } from '../../firebase/auth/create-user'
 import Form from '../../components/form'
 function SignUp() {
   

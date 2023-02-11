@@ -1,6 +1,6 @@
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import  toast  from "react-hot-toast";
-import { app } from "./firebase-config";
+import { app } from "../firebase-config";
 
 
 export const auth = getAuth(app);

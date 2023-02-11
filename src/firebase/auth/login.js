@@ -1,5 +1,5 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { app } from "./firebase-config";
+import { app } from "../firebase-config";
 import toast from "react-hot-toast"
 
 const auth = getAuth(app);

@@ -19,7 +19,7 @@ function PasswordChange() {
             <InputLeftAddon children={<Icon as={FiLock} />} />
             <Input name='password' type="password" variant="outlined" placeholder='Change your password' onChange={formik.handleChange}/>
           </InputGroup>
-        <Button onClick={formik.handleSubmit}>Change Password</Button>
+        <Button colorScheme="blue" onClick={formik.handleSubmit}>Change Password</Button>
                     
       
     </div>

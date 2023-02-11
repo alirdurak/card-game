@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginMethod } from '../redux/auth-slice'
 import { useNavigate } from 'react-router-dom'
-import { googleSignIn } from '../firebase/google-signin'
+import { googleSignIn } from '../firebase/auth/google-signin'
 
 
 
