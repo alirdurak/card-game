@@ -4,13 +4,12 @@ import { app } from "../firebase-config";
 
 const auth = getAuth(app);
 
-const user = auth.currentUser;
  
 export const changePassword = async (newPassword)=>{
     try {
-         await updatePassword(user, newPassword)        
+         await updatePassword(auth.currentUser, newPassword)        
         toast.success("Your password updated!!")
-        return user
+        
     } catch (error) {
         toast.error(error.message)
     }

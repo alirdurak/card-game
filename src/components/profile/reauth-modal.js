@@ -21,6 +21,7 @@ import {
     },
     onSubmit: async values => {
       await reAuth(values.password)
+      onClose()
     
   }});
   

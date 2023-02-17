@@ -15,8 +15,8 @@ function PasswordChange() {
       
     },
     onSubmit: async values => {
-    const user = await changePassword(values.newPassword)
-    !user && onOpen()
+    const error = await changePassword(values.newPassword)
+      error && onOpen()
     },
   });
   return (
