@@ -1,34 +1,15 @@
 import React from 'react'
-import { Grid,GridItem } from '@chakra-ui/react';
-
+import { Grid } from '@chakra-ui/react';
+import { cardArray } from '../assets/data';
+import CardItem from './card-item';
 function CardGrid() {
   return (
     <div className='grid-div'>
-      <Grid marginX={48} templateColumns='repeat(6, 1fr)' gap={6}>
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
-          <GridItem w='100%' h={20}  bg='black' />
+      <Grid marginX={60}  templateColumns='repeat(6, 1fr)' >
+        {cardArray.map((item)=>
+          <CardItem  item={item} />
+        )}
+          
       </Grid>
       
     </div>  
