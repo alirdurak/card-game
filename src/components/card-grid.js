@@ -1,15 +1,18 @@
 import React from 'react'
 import { Grid } from '@chakra-ui/react';
-import { cardArray } from '../assets/data';
+import { useSelector } from 'react-redux';
 import CardItem from './card-item';
-function CardGrid() {
+function CardGrid(){ 
+ const data = useSelector(state=>state.cards.cards)
   return (
     <div className='grid-div'>
       <Grid marginX={60}  templateColumns='repeat(6, 1fr)' >
-        {cardArray.map((item)=>
-          <CardItem  item={item} />
+        {data.map((item)=>
+          <div key={item.id}>
+            <CardItem  item={item} />
+          </div>
         )}
-          
+
       </Grid>
       
     </div>  

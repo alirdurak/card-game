@@ -3,7 +3,7 @@ import React from 'react'
 
 function CardItem({item}) {
   return (
-    <div  style={{
+    <div key={item.id}  style={{
       padding: "0px",
       margin: "0px",
       width: "6rem",
@@ -16,7 +16,7 @@ function CardItem({item}) {
       
         margin: "0px",
         padding: "0px"
-      }} alt={item.name} src={item.nonRevealedImage}  />
+      }} alt={item.name} src={item.satus === false? item.nonRevealedImage : item.revealedImage}  />
     </div>
   )
 }
