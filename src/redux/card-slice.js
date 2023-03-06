@@ -1,65 +1,56 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {data} from "../assets/data"
-const setCards = () =>{
-    return  data.sort(()=> Math.random() -0.5);
-};
+import {data} from "../assets/data";
+const shuffle = (array) => {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+  };
 const cardSlice = createSlice({
     name: "cards",
     initialState:{
-        cards:setCards(),
-        activeCards:[],
-        status:"",
-        beginScore: 200,
-        correctMatch:40,
-        wrongMatch:20,
-        closedCards:24,
-        openedCards:0,
+        cards:shuffle(data),
+        matchedCards:[],
+        selectedCards:[],
+        score:""
         
     },
     reducers:{
-      
-        resetGame: (state) =>{
-            state.cards=data.sort(()=> Math.random() -0.5);
-            state.activeCards=[];
-            state.status="";
-            state.beginScore= 200;
-            state.correctMatch=40;
-            state.wrongMatch=20;
-            state.closedCards=24;
-            state.openedCards=0;
+        resetGame : (state) => {
+            const newArray = shuffle(data)
+            state.cards = newArray
         },
-        openCard: (state, action) =>{
-            const findCard = state.cards.find((card) => card.id === action.payload);
-            findCard.status = true;
-            state.activeCards =[...state.activeCards, findCard];
-            state.status = "selected";
-        },
-        closeCard: (state) =>{
-            state.activeCards.map(
-                (item) => (state.cards.find((card) => card.name === item.name).status = false))
-                state.status = "";
-                state.activeCards = [];
-        },
-        correctMatch: (state) =>{
-            state.beginScore = (state.beginScore + state.correctMatch ) ;
-            state.openedCards += 2;    
-            state.closedCards -= 2;
-            state.activeCards = [];
-            state.status = "success";
+        selectCard : (state, action) => {
+            if(state.selectedCards.length<2){
+                const selectedCard =  state.cards.find(card => card.id === action.payload)
+                selectedCard.status = "selected"
+                state.selectedCards = [...state.selectedCards,selectedCard]
+            }else if(state.selectedCards[0].name === state.selectedCards[1].name ) {
+               state.cards.forEach(card => { if(card.name === state.selectedCards[0].name){
+                card.status = "matched"
+               }
+
+               })
+                state.selectedCards.forEach(card => card.status = "matched")
+                state.matchedCards = [...state.matchedCards, state.selectedCards]
+                state.selectedCards = []
+            }else{
+                state.cards.forEach(card => {
+                    if(card.status !== "matched"){
+                        card.status = "hidden"
+                    }
+                })
+                state.selectedCards.forEach(card => card.status = "hidden")
+                state.selectedCards = []
+            }
             
-        },
-        falseMatch: (state)=>{
-            state.beginScore -= state.wrongMatch
-            state.activeCards = [];
-            state.status = "fail";
-            
-        },
-        setMatch: (state, action) =>{
-            const card =state.cards.find((card) => card.id === action.payload);
-            card.matched = true
         }
+      
+       
     },
 })
 
-export const {fillCards,resetGame,openCard,closeCard,correctMatch,falseMatch,setMatch} = cardSlice.actions;
+export const {resetGame,selectCard} = cardSlice.actions;
 export default cardSlice.reducer;

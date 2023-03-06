@@ -1,22 +1,28 @@
 
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { selectCard } from '../redux/card-slice'
 
 function CardItem({item}) {
+  const dispatch = useDispatch()
+  const handleClick = () =>{
+    dispatch(selectCard(item.id))
+  }
   return (
-    <div key={item.id}  style={{
+    <div key={item.id}   style={{
       padding: "0px",
       margin: "0px",
       width: "6rem",
       border:"2px solid green",
       height: "6rem"
     }}>
-      <img style={{
+      <img onClick={handleClick} style={{
         width: "6rem",
         height: "6rem",
       
         margin: "0px",
         padding: "0px"
-      }} alt={item.name} src={item.satus === false? item.nonRevealedImage : item.revealedImage}  />
+      }} alt={item.name} src={item.status === "hidden"? item.nonRevealedImage : item.revealedImage}  />
     </div>
   )
 }

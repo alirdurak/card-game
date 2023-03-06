@@ -20,7 +20,7 @@ function Scores() {
             <StatLabel>Best Score</StatLabel>
             <StatNumber>0</StatNumber>
         </Stat>
-          <Button onClick={handlePlay} variant="filled">Reset Game</Button>
+          <Button onClick={handlePlay} variant="filled">Restart Game</Button>
         <Stat>
             <StatLabel>Last Score</StatLabel>
             <StatNumber>0</StatNumber>
