@@ -26,21 +26,25 @@ const cardSlice = createSlice({
             state.score = 0
         },
         selectCard : (state, action) => {
-            if(state.selectedCards.length<2){
+            if(state.selectedCards.length<1 || (action.payload !== state.selectedCards[0].id && state.selectedCards.length<2)){
                 const selectedCard =  state.cards.find(card => card.id === action.payload)
                 selectedCard.status = "selected"
                 state.selectedCards = [...state.selectedCards,selectedCard]
-            }else if(state.selectedCards[0].name === state.selectedCards[1].name ) {
-               state.cards.forEach(card => { if(card.name === state.selectedCards[0].name){
-                card.status = "matched"
-               }
-
-               })
-                state.selectedCards.forEach(card => card.status = "matched")
-                state.matchedCards = [...state.matchedCards, state.selectedCards]
-                state.selectedCards = []
-                state.score += 50
-            }else{
+            }
+            
+        },
+        matchCard: (state)=> {
+            if(state.selectedCards[0].name === state.selectedCards[1].name && state.selectedCards[0].id !== state.selectedCards[1].id) {
+                state.cards.forEach(card => { if(card.name === state.selectedCards[0].name){
+                 card.status = "matched"
+                }
+ 
+                })
+                 state.selectedCards.forEach(card => card.status = "matched")
+                 state.matchedCards = [...state.matchedCards, state.selectedCards]
+                 state.selectedCards = []
+                 state.score += 50
+             }else if(state.selectedCards[0].name !== state.selectedCards[1].name){
                 state.cards.forEach(card => {
                     if(card.status !== "matched"){
                         card.status = "hidden"
@@ -51,6 +55,10 @@ const cardSlice = createSlice({
                 state.score -= 10
             }
             
+        },
+        closeCard: (state)=> {
+           
+
         },
         lastScore: (state) => {
             state.lastScore = state.score
@@ -68,5 +76,5 @@ const cardSlice = createSlice({
     },
 })
 
-export const {resetGame,selectCard,lastScore,bestScore} = cardSlice.actions;
+export const {resetGame,selectCard,lastScore,bestScore,closeCard,matchCard} = cardSlice.actions;
 export default cardSlice.reducer;

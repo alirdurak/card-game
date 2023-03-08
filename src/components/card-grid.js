@@ -1,12 +1,15 @@
 import React,{useEffect} from 'react'
-import { bestScore, lastScore,resetGame } from '../redux/card-slice';
+import { bestScore, lastScore,resetGame,matchCard } from '../redux/card-slice';
 import { Grid } from '@chakra-ui/react';
 import { useSelector,useDispatch } from 'react-redux';
 import CardItem from './card-item';
 import { toast } from 'react-hot-toast';
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 function CardGrid(){ 
  const data = useSelector(state=>state.cards.cards)
+ const selectedCards = useSelector(state=> state.cards.selectedCards)
  const dispatch = useDispatch()
+  const [animationParent] = useAutoAnimate()
 
  useEffect(()=>{
   if(data.every(card => card.status === "matched")){
@@ -18,20 +21,28 @@ function CardGrid(){
     toast.success("Congrulations")
     
   }
+  if(selectedCards.length>1){
+    setTimeout(()=>{
+      dispatch(matchCard())
+    },500)
+  }
     
- },[data,dispatch])
+ },[data,dispatch,selectedCards])
 
 
   return (
     <div className='grid-div'>
-      <Grid marginX={60}  templateColumns='repeat(6, 1fr)' gap={2} >
-        {data.map((item)=>
-          <div key={item.id}>
-            <CardItem  item={item} />
-          </div>
-        )}
-
-      </Grid>
+      <ul style={{
+        listStyle: "none"
+      }} >
+        <Grid  marginX={60}  templateColumns='repeat(6, 1fr)' gap={2} >
+          {data.map((item)=>
+            <li ref={animationParent}  key={item.id}>
+              <CardItem  item={item} />
+            </li>
+          )}
+        </Grid>
+      </ul>
       
     </div>  
     

@@ -2,14 +2,18 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { selectCard } from '../redux/card-slice'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+
 
 function CardItem({item}) {
   const dispatch = useDispatch()
+  const [animationParent] = useAutoAnimate()
   const handleClick = () =>{
     dispatch(selectCard(item.id))
   }
+
   return (
-    <div key={item.id}   style={{
+    <div key={item.id} ref={animationParent}   style={{
       padding: "0px",
       margin: "0px",
       width: "6rem",
@@ -17,7 +21,7 @@ function CardItem({item}) {
       
      
     }}>
-      <img onClick={handleClick} style={{
+      <img onClick={handleClick} ref={animationParent} style={{
        height: "100%",
        width: "100%",
       cursor: "pointer",
