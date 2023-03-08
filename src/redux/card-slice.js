@@ -14,13 +14,16 @@ const cardSlice = createSlice({
         cards:shuffle(data),
         matchedCards:[],
         selectedCards:[],
-        score:""
+        score:0,
+        lastScore: JSON.parse(localStorage.getItem("lastScore")),
+        bestScore: JSON.parse(localStorage.getItem("bestScore"))
         
     },
     reducers:{
         resetGame : (state) => {
             const newArray = shuffle(data)
             state.cards = newArray
+            state.score = 0
         },
         selectCard : (state, action) => {
             if(state.selectedCards.length<2){
@@ -36,6 +39,7 @@ const cardSlice = createSlice({
                 state.selectedCards.forEach(card => card.status = "matched")
                 state.matchedCards = [...state.matchedCards, state.selectedCards]
                 state.selectedCards = []
+                state.score += 50
             }else{
                 state.cards.forEach(card => {
                     if(card.status !== "matched"){
@@ -44,13 +48,25 @@ const cardSlice = createSlice({
                 })
                 state.selectedCards.forEach(card => card.status = "hidden")
                 state.selectedCards = []
+                state.score -= 10
             }
             
+        },
+        lastScore: (state) => {
+            state.lastScore = state.score
+            localStorage.setItem("lastScore", JSON.stringify(state.score))
+        },
+        bestScore: (state) => {
+            if(state.score > state.bestScore){
+                state.bestScore = state.score
+                localStorage.setItem("bestScore",JSON.stringify(state.score))
+            }
         }
+
       
        
     },
 })
 
-export const {resetGame,selectCard} = cardSlice.actions;
+export const {resetGame,selectCard,lastScore,bestScore} = cardSlice.actions;
 export default cardSlice.reducer;
