@@ -18,7 +18,7 @@ function CardGrid(){
     setTimeout(()=>{
       dispatch(resetGame())
     },2000)
-    toast.success("Congrulations")
+    toast.success("congratulations")
     
   }
   if(selectedCards.length>1){
@@ -34,8 +34,8 @@ function CardGrid(){
     <div className='grid-div'>
       <ul style={{
         listStyle: "none"
-      }} >
-        <Grid  marginX={60}  templateColumns='repeat(6, 1fr)' gap={2} >
+      }} ref={animationParent} >
+        <Grid  marginX={60}  templateColumns='repeat(6, 1fr)' gap={2} ref={animationParent} >
           {data.map((item)=>
             <li ref={animationParent}  key={item.id}>
               <CardItem  item={item} />

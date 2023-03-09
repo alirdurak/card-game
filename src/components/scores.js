@@ -26,8 +26,11 @@ function Scores() {
             <StatNumber>{bestScore}</StatNumber>
         </Stat>
         
-          <div><Button onClick={handlePlay} variant="filled">Restart Game</Button><br />
-          Score:{currentScore}
+          <div><Button onClick={handlePlay} variant="filled">Restart Game</Button>
+            <Stat>
+              <StatLabel>Score</StatLabel>
+              <StatNumber>{currentScore}</StatNumber>
+            </Stat>
           </div>
         <Stat>
             <StatLabel>Last Score</StatLabel>

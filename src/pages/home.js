@@ -15,8 +15,8 @@ function Home() {
     <Flex  direction="column" gap={20} >
       <Navbar/>
       <Text fontSize={50} >Welcome {user&& user.displayName} </Text>
-      {user?<Scores/>: <Text fontSize={50} > Please Signin </Text>}
-      <CardGrid/>
+      {user? <div><Scores/> <CardGrid/></div>: <Text fontSize={50} > Please Signin </Text>
+       }
       
       
 
