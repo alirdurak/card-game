@@ -5,7 +5,7 @@ You can also store your points while enjoying the memory game.
 
 # Demo
 
-    [](https://cardly-card.netlify.app/)
+  [Cardly-Card Game](https://cardly-card.netlify.app/)
 
 
 ## Screenshots
