@@ -11,7 +11,7 @@ try{
     const token = credential.accessToken;
     const user = result.user;
     toast.success("You have succesfully logged in!!")
-    return  user 
+    return  (user ,token) 
 }catch(error){
     toast.error(error.mesage, error.code)
 
