@@ -1,70 +1,34 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Cardly-Card Game
 
-## Available Scripts
+You can also store your points while enjoying the memory game.
 
-In the project directory, you can run:
 
-### `npm start`
+## Screenshots
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[![screencapture-cardly-card-netlify-app-signup-2023-03-09-13_29_01.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-signup-2023-03-09-13_29_01.png)](https://tinypic.host/i/rtZNq)
+[![screencapture-cardly-card-netlify-app-login-2023-03-09-13_28_13.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-login-2023-03-09-13_28_13.png)](https://tinypic.host/i/rtUrd)
+[![screencapture-cardly-card-netlify-app-2023-03-09-13_20_13.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-2023-03-09-13_20_13.png)](https://tinypic.host/i/rtigL)
+[![screencapture-cardly-card-netlify-app-profile-2023-03-09-13_42_40.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-profile-2023-03-09-13_42_40.png)](https://tinypic.host/i/rtl10)
+[![screencapture-cardly-card-netlify-app-2023-03-09-13_41_46.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-2023-03-09-13_41_46.png)](https://tinypic.host/i/rt16Y)
+[![screencapture-cardly-card-netlify-app-2023-03-09-13_40_19.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-2023-03-09-13_40_19.png)](https://tinypic.host/i/rtXDa)
+[![screencapture-cardly-card-netlify-app-2023-03-09-13_29_31.png](https://tinypic.host/images/2023/03/09/screencapture-cardly-card-netlify-app-2023-03-09-13_29_31.png)](https://tinypic.host/i/rtmK2)
+## Used Technologies
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**React, Redux, ChakraUI, Firebase**
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+  
+## Enviomet Variables
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project you will need to add the following environment variables to your .env file
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+REACT_APP_API_KEY=AIzaSyD7BMHZ--uJdfvEVqCk3DyQtWfcShHBzUw
+REACT_APP_AUTH_DOMAIN= cardly-cardgame-a4390.firebaseapp.com
+REACT_APP_PROJECT_ID=cardly-cardgame-a4390
+REACT_APP_STORAGE_BUCKET=cardly-cardgame-a4390.appspot.com
+REACT_APP_MESSAGING_SENDER_ID= 492942085917
+REACT_APP_APP_ID=1:492942085917:web:846088c82b8df704649bf4
+  
